@@ -89,7 +89,3 @@ module Associatable
     end
   end
 end
-
-class SQLObject
-  extend Associatable
-end

@@ -1,8 +1,12 @@
+require 'byebug'
 require_relative 'db_connection'
 require 'active_support/inflector'
+require_relative 'associatable'
+require_relative 'searchable'
 
 class SQLObject
-  finalize!
+  extend Associatable
+  extend Searchable
 
   def self.columns
     @columns ||=
@@ -95,8 +99,14 @@ class SQLObject
   end
 
   def insert
-    attributes[:id] = DBConnection.last_insert_row_id
+    max_id = DBConnection.execute(<<-SQL)
+      SELECT
+        MAX(id) as id
+      FROM
+        #{self.class.table_name}
+    SQL
 
+    attributes[:id] = max_id.last['id'] + 1
     col_names = self.class.columns
     question_marks = ["?"] * col_names.size
 

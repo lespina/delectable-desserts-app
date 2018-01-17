@@ -13,8 +13,6 @@ class ControllerBase
     @res = res
     @req = req
     @params = req.params.merge(route_params)
-
-    # form_authenticity_token if self.class.protect_from_forgery?
   end
 
   # Helper method to alias @already_built_response
@@ -49,7 +47,9 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
-    path = "views/#{self.class.to_s.underscore}/#{template_name}.html.erb"
+    root_path = File.join(File.dirname(__FILE__), '..')
+    views_path = File.join(root_path, 'app', 'views')
+    path = "#{views_path}/#{self.class.to_s.underscore}/#{template_name}.html.erb"
     template = ERB.new(File.read(path))
     render_content template.result(binding), 'text/html'
   end

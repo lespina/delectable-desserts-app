@@ -1,0 +1,22 @@
+<h1>ALL THE DESSERTS</h1>
+<div style="width: 100%; display: table;">
+  <% @hippos.each do |hippo| %>
+    <div style="float: left; margin-right: 8px;">
+      <div style="text-align: center; width: 100px;"><%= hippo.name %></div>
+      <div style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); height: 100px; width: 100px; background-size: contain;"></div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<a href="/desserts/new">New dessert!</a>
+
+<br>
+
+<% @desserts.each do |dessert| %>
+  Type: <%= dessert.type %>
+  <br>
+  Dibs: <%= dessert.hungry_hippo.name %>
+  <br>
+<% end %>

@@ -33,7 +33,3 @@ module Searchable
     self.parse_all(results)
   end
 end
-
-class SQLObject
-  extend Searchable
-end
