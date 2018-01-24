@@ -1,5 +1,15 @@
 body {
   font-family:monospace;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0;
 }
 
 .title {
@@ -26,16 +36,43 @@ body {
 
 .hippo-container {
   float: left;
-  margin-right: 8px;
+  margin-right: 12px;
+  position: relative;
 }
 
 .hippo-name {
   text-align: center;
   width: 100px;
+  background-color: beige;
+  border: 2px solid black;
+  color: black;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .hippo-img {
   height: 100px;
   width: 100px;
   background-size: contain;
+}
+
+.desserts-list {
+  position: absolute;
+  top: 130px;
+  visibility:hidden;
+  background-color: DeepSkyBlue;
+  border: 2px solid pink;
+  color: white;
+  border-radius: 4px;
+  transition: all 300ms ease-in-out;
+  opacity: 0;
+}
+
+.hippo-img:hover + .desserts-list, .desserts-list:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dessert-type {
+  text-transform:capitalize;
 }

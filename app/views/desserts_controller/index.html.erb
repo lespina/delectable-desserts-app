@@ -16,11 +16,9 @@
       <div class="hippo-name"><%= hippo.name %></div>
       <div class="hippo-img" style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); "></div>
 
-      <br/>
-
       <ul class="desserts-list">
         <% hippo.desserts.each_with_index do |dessert, idx| %>
-          <li><%= "#{idx + 1}. #{dessert.type}" %></li>
+          <li class="dessert-type"><%="#{idx + 1}. #{dessert.type}"%></li>
         <% end %>
       </ul>
 
