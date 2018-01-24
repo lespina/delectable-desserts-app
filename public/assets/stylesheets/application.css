@@ -1,0 +1,41 @@
+body {
+  font-family:monospace;
+}
+
+.title {
+  display: block;
+  font-size: 48px;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.new-desserts-link-container {
+  float: right;
+}
+
+.some-hungry-hippos-text {
+  font-size: 22px;
+  margin-right: 30px;
+}
+
+.new-desserts-link {
+  margin-right: 30px;
+  font-size: 24px;
+}
+
+.hippo-container {
+  float: left;
+  margin-right: 8px;
+}
+
+.hippo-name {
+  text-align: center;
+  width: 100px;
+}
+
+.hippo-img {
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+}

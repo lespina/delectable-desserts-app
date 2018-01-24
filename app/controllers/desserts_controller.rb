@@ -1,7 +1,12 @@
 require_relative './application_controller'
 require_relative '../models/dessert.rb'
+require 'byebug'
 
 class DessertsController < ApplicationController
+
+  def to_index
+    redirect_to '/desserts'
+  end
 
   def index
     @hippos = HungryHippo.all
@@ -12,12 +17,13 @@ class DessertsController < ApplicationController
   end
 
   def new
+    @hippos = HungryHippo.all
   end
 
   def create
     @dessert = Dessert.new(dessert_params)
     @hippos = HungryHippo.all
-    @dessert.hungry_hippo_id = @hippos.sample.id
+    # @dessert.hungry_hippo_id = @hippos.sample.id
 
     if @dessert.save
       @desserts = Dessert.all

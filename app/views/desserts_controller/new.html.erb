@@ -1,7 +1,16 @@
+<link rel="stylesheet" href="../../assets/stylesheets/application.css">
+
+
 <form action="/desserts" method="POST">
   <label>Type
     <input type="text" name="dessert[type]">
   </label>
-
+  <label>Who's got DIBS? (pick a hippo)
+    <% @hippos.each do |hippo| %>
+      <label><div style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); height: 50px; width: 50px; background-size: contain;"></div>
+        <input type="radio" name="dessert[hungry_hippo_id]" value="<%= hippo.id %>"><%= hippo.name %></input>
+      </label>
+    <% end %>
+  </label>
   <input type="submit">
 </form>

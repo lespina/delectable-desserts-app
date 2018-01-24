@@ -1,22 +1,38 @@
-<h1>ALL THE DESSERTS</h1>
-<div style="width: 100%; display: table;">
+<link rel="stylesheet" href="/public/assets/stylesheets/application.css">
+
+<h1 class="title">ALL THE DESSERTS!</h1>
+
+<div class="new-desserts-link-container">
+  <p class="some-hungry-hippos-text">
+    These are some<br/> <strong>hungry</strong> hippos!<br/>
+  </p>
+  <a class="new-desserts-link" href="/desserts/new">Add a dessert!</a>
+</div>
+
+<br>
+<div class="hippos-list">
   <% @hippos.each do |hippo| %>
-    <div style="float: left; margin-right: 8px;">
-      <div style="text-align: center; width: 100px;"><%= hippo.name %></div>
-      <div style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); height: 100px; width: 100px; background-size: contain;"></div>
+    <div class="hippo-container">
+      <div class="hippo-name"><%= hippo.name %></div>
+      <div class="hippo-img" style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); "></div>
+
+      <br/>
+
+      <ul class="desserts-list">
+        <% hippo.desserts.each_with_index do |dessert, idx| %>
+          <li><%= "#{idx + 1}. #{dessert.type}" %></li>
+        <% end %>
+      </ul>
+
     </div>
   <% end %>
 </div>
 
 <br>
 
-<a href="/desserts/new">New dessert!</a>
-
-<br>
-
-<% @desserts.each do |dessert| %>
+<!-- <% @desserts.each do |dessert| %>
   Type: <%= dessert.type %>
   <br>
   Dibs: <%= dessert.hungry_hippo.name %>
   <br>
-<% end %>
+<% end %> -->
