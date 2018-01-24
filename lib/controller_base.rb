@@ -8,6 +8,7 @@ require_relative './flash'
 class ControllerBase
   attr_reader :req, :res, :params
   @@protect_from_forgery = false
+
   # Setup the controller
   def initialize(req, res, route_params = {})
     @res = res
@@ -46,12 +47,16 @@ class ControllerBase
 
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
-  def render(template_name)
-    root_path = File.join(File.dirname(__FILE__), '..')
-    views_path = File.join(root_path, 'app', 'views')
-    path = "#{views_path}/#{self.class.to_s.underscore}/#{template_name}.html.erb"
-    template = ERB.new(File.read(path))
-    render_content template.result(binding), 'text/html'
+  def render(template_name, status = 200)
+    if status == 200
+      root_path = File.join(File.dirname(__FILE__), '..')
+      views_path = File.join(root_path, 'app', 'views')
+      path = "#{views_path}/#{self.class.to_s.underscore}/#{template_name}.html.erb"
+      template = ERB.new(File.read(path))
+      render_content template.result(binding), 'text/html'
+    else
+      render_content template_name, 'application/json'
+    end
   end
 
   # method exposing a `Session` object
@@ -69,6 +74,14 @@ class ControllerBase
 
     self.send(name)
     render(name.to_s) unless @already_built_response
+  end
+
+  def public_path(location)
+    return req.base_url + '/public/' + location 
+  end
+
+  def image_path(filename)
+    return req.base_url + '/public/images/' + filename
   end
 
   def form_authenticity_token

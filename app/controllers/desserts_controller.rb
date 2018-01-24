@@ -30,7 +30,7 @@ class DessertsController < ApplicationController
       render :index
       # render "/desserts/#{@dessert.id}"
     else
-      render json: ['Invalid dessert parameters!'], status: 422
+      render ['Invalid dessert parameters!'], status: 422
     end
   end
 

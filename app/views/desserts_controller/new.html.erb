@@ -1,16 +1,37 @@
-<link rel="stylesheet" href="../../assets/stylesheets/application.css">
+<link rel="stylesheet" href="<%= public_path 'assets/stylesheets/application.css' %>">
 
+<a class="home-link" href="/">Home</a>
 
-<form action="/desserts" method="POST">
-  <label>Type
-    <input type="text" name="dessert[type]">
+<form class="new-dessert-form" action="/desserts" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label class="new-dessert-type-text">What dessert would you like to add?<br/><br/>
+    <input class="new-dessert-input" type="text" name="dessert[type]">
   </label>
-  <label>Who's got DIBS? (pick a hippo)
-    <% @hippos.each do |hippo| %>
-      <label><div style="background-image: url(http://localhost:3000/public/<%= hippo.image_url %>); height: 50px; width: 50px; background-size: contain;"></div>
-        <input type="radio" name="dessert[hungry_hippo_id]" value="<%= hippo.id %>"><%= hippo.name %></input>
-      </label>
-    <% end %>
-  </label>
-  <input type="submit">
+  <br/>
+  <div class="new-hippos-text">Feed a hungry hippo!</div>
+    <ul class="new-hippos-list">
+      <% @hippos.each do |hippo| %>
+        <li class="new-hippos-item">
+          <div class="hippo-dessert-count small" style="color: <%= hippo.color %>;">
+            <%= hippo.desserts.count %>
+          </div>
+          <label>
+            <div class="new-hippos-img" style="background-image: url(<%= image_path hippo.image_url %>);"></div>
+            <input type="radio" name="dessert[hungry_hippo_id]" value="<%= hippo.id %>"><%= hippo.name %></input>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+    <div class="new-hippos-text transparent">.</div>
+  <input class="submit" type="submit" value="Add Dessert!"></input>
 </form>
+<br />
+
+<section class="links">
+  <a href="http://www.lukeespina.com" class="personal-site">lukeespina.com</a>
+  <a href="https://linkedin.com/in/luke-espina/" class="linkedin">/in/luke-espina</a>
+  <a href="https://github.com/lespina" class="github">/lespina</a>
+  <a href="https://angel.co/luke-espina/" class="angellist">/luke-espina</a>
+</section>
