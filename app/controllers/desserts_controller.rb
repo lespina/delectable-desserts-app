@@ -5,7 +5,7 @@ require 'byebug'
 class DessertsController < ApplicationController
 
   def to_index
-    redirect_to '/desserts'
+    redirect_to '/feed'
   end
 
   def index

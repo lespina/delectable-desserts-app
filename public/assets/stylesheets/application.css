@@ -36,7 +36,8 @@ li {
 .title {
   display: block;
   font-size: 48px;
-  width: 500px;
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
   margin-top: 60px;
   margin-bottom: 75px;
@@ -65,6 +66,22 @@ li {
   z-index: 0;
 }
 
+@media (max-width: 1220px) {
+  .new-desserts-link-container {
+    top: auto;
+    left: 40%;
+    bottom: 70px;
+  }
+}
+
+@media (max-width: 1220px) and (max-height: 640px) {
+  .new-desserts-link-container {
+    top: 0;
+    left: auto;
+    bottom: auto;
+  }
+}
+
 .some-hungry-hippos-text {
   font-size: 22px;
   margin-bottom: 20px;
@@ -78,6 +95,7 @@ li {
 
 .hippos-list-container {
   margin: 30px auto;
+  margin-top: -20px;
   max-width: 800px;
 }
 

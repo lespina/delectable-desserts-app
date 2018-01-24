@@ -5,21 +5,8 @@
     <span><span style="color:#080003;">R</span><span style="color:#1b0003;">u</span><span style="color:#2d0003;">b</span><span style="color:#400002;">y</span><span style="color:#520002;"> </span><span style="color:#650002;">o</span><span style="color:#770002;">n</span><span style="color:#8a0001;"> </span><span style="color:#9c0001;">T</span><span style="color:#af0001;">r</span><span style="color:#c10001;">a</span><span style="color:#d40000;">i</span><span style="color:#e60000;">l</span><span style="color:#f90000;">s</span></span>!</a>
 </div>
 
-<h1 class="title">Feed the hippos!</h1>
+<h1 class="title">Hungry hungry hippos!</h1>
 
-<div class="hippos-list-container">
-  <div class="hippos-list">
-    <% @hippos.each do |hippo| %>
-      <div class="hippo-container">
-        <div class="hippo-dessert-count" style="color: <%= hippo.color %>;">
-          <%= hippo.desserts.count %>
-        </div>
-        <div class="hippo-name"><%= hippo.name %></div>
-        <label for="hidden-input-<%=hippo.id%>"><div class="hippo-img" style="background-image: url(<%= image_path hippo.image_url %>); "></div></label>
-      </div>
-    <% end %>
-  </div>
-</div>
 <% @hippos.each do |hippo| %>
   <input id="hidden-input-<%=hippo.id%>" type="submit" name="" value="">
   <div class="desserts-list-container">
@@ -35,6 +22,20 @@
     </ol>
   </div>
 <% end %>
+
+<div class="hippos-list-container">
+  <div class="hippos-list">
+    <% @hippos.each do |hippo| %>
+      <div class="hippo-container">
+        <div class="hippo-dessert-count" style="color: <%= hippo.color %>;">
+          <%= hippo.desserts.count %>
+        </div>
+        <div class="hippo-name"><%= hippo.name %></div>
+        <label for="hidden-input-<%=hippo.id%>"><div class="hippo-img" style="background-image: url(<%= image_path hippo.image_url %>); "></div></label>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <div class="new-desserts-link-container">
   <p class="some-hungry-hippos-text">
