@@ -5,7 +5,7 @@ class HungryHippo < ApplicationRecord
   self.finalize!
 
   def color
-    if self.desserts.count <= 3
+    if self.desserts.count < 3
       return 'red'
     elsif self.desserts.count < 5
       return 'black'

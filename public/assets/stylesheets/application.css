@@ -216,7 +216,7 @@ li {
 .new-dessert-type-text {
   font-size: 24px;
   display: block;
-  width: 600px;
+  width: 100%;
   text-align: center;
   margin: 10px auto;
 }
@@ -232,6 +232,7 @@ li {
 
 .new-hippos-list {
   display: flex;
+  justify-content: space-around;
   flex-wrap: no-wrap;
   margin: 0;
   margin-left: -10px;
